@@ -1,6 +1,6 @@
-#Factory Girl Clinic
+#FactoryBot Clinic
 
-FactoryGirl is a gem that makes testing easier. It allows you to create "factories" for the objects your app is concerned with, thereby allowing you to more quickly set up tests for a feature or method. Once FactoryGirl is set up, instead of needing to type this:
+FactoryBot is a gem that makes testing easier. It allows you to create "factories" for the objects your app is concerned with, thereby allowing you to more quickly set up tests for a feature or method. Once FactoryBot is set up, instead of needing to type this:
 
 ```
 let(:leader) { Member.create(first_name: "Emily", last_name: "Dickinson", email: "nobody@nobodytoo.org", bio: "I don't see what's so great about leaving the house.", favorite_book: "Aurora Leigh", leader: true) }
@@ -9,7 +9,7 @@ let(:leader) { Member.create(first_name: "Emily", last_name: "Dickinson", email:
 I can use something more simple, like this:
 
 ```
-let(:leader) { FactoryGirl.create(:club_leader) }
+let(:leader) { FactoryBot.create(:club_leader) }
 ```
 ##Set Up in Sinatra
 
@@ -22,7 +22,7 @@ let(:leader) { FactoryGirl.create(:club_leader) }
  rm -rf .git && git init && git add -A && git commit -m 'Initial commit'
 ```
 
-- First, add Factory Girl to your Gemfile:
+- First, add Factory Bot to your Gemfile:
 
 ```ruby
 group :development, :test do
@@ -50,7 +50,7 @@ require_relative 'support/factories'
 Open up `spec/support/factories.rb`. Add the following code:
 
 ```ruby
-FactoryGirl.define do
+FactoryBot.define do
 
   # Your factories will go here!
 
@@ -112,7 +112,7 @@ factory :member do
 end
 ```
 
-It's that simple! Now every time I call `FactoryGirl.create(:member)`, I'll have a standardized book club member (in this case, Emily Dickinson).
+It's that simple! Now every time I call `FactoryBot.create(:member)`, I'll have a standardized book club member (in this case, Emily Dickinson).
 
 ###Using a Factory ([Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Using_factories))
 
@@ -121,7 +121,7 @@ Let's look at an example of how I would use this.
 ```
 feature 'book club member directory' do
   scenario "view list of all book club members" do
-    emily_dickinson = FactoryGirl.create(:member)
+    emily_dickinson = FactoryBot.create(:member)
 
     visit '/members'
 
@@ -134,13 +134,13 @@ end
 
 ####Using Factories with Custom info
 
-But what if we want to customize some part of the Factory Girl created object? Let's try that out:
+But what if we want to customize some part of the Factory Bot created object? Let's try that out:
 
 ```
 feature "book club member directory" do
   scenario "view list of all book club members" do
-    emily_dickinson = FactoryGirl.create(:member)
-    walt_whitman = FactoryGirl.create(:member,first_name: "Walt", last_name: "Whitman", bio: "Yawp")
+    emily_dickinson = FactoryBot.create(:member)
+    walt_whitman = FactoryBot.create(:member,first_name: "Walt", last_name: "Whitman", bio: "Yawp")
 
     visit '/members'
 
@@ -166,7 +166,7 @@ factory :book_club do
 end
 ```
 
-Once that factory is set up, we can go back to our `member` factory and just add the word `book_club` on its own line in the factory definition. FactoryGirl will look for a factory of that name and create the associated object for us:
+Once that factory is set up, we can go back to our `member` factory and just add the word `book_club` on its own line in the factory definition. FactoryBot will look for a factory of that name and create the associated object for us:
 
 ```ruby
 factory :member do
@@ -186,9 +186,9 @@ Here's an example:
 ```
 feature "view a particular book club's members" do
   scenario "see all members of a particular book club" do
-    emily_dickinson = FactoryGirl.create(:member)
+    emily_dickinson = FactoryBot.create(:member)
     book_club = emily_dickinson.book_club
-    ts_eliot = FactoryGirl.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
+    ts_eliot = FactoryBot.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
 
     visit "/book_clubs/#{book_club.id}"
 
@@ -203,8 +203,8 @@ end
 Or, let's say we want to add a book club member to a specific, pre-existing club. We can just overwrite this default information like before:
 
 ```
-book_club = FactoryGirl.create(:book_club, name: "Cranky Poet's Society")
-emily_dickinson = FactoryGirl.create(:member, book_club: book_club)
+book_club = FactoryBot.create(:book_club, name: "Cranky Poet's Society")
+emily_dickinson = FactoryBot.create(:member, book_club: book_club)
 ```
 
 Now Emily will belong to the book club we already created, and the factory won't create a new book club when it creates her membership.
@@ -227,16 +227,16 @@ factory :member do
   end
 ```
 
-If we call `FactoryGirl.create(:club_leader)`, all of the default traits we set up in the normal `member` factory will still be there, *except* the one we explicitly overrode in the `book_club_leader` factory. Nesting things this way makes creating new factories for explicit uses very simple.
+If we call `FactoryBot.create(:club_leader)`, all of the default traits we set up in the normal `member` factory will still be there, *except* the one we explicitly overrode in the `book_club_leader` factory. Nesting things this way makes creating new factories for explicit uses very simple.
 
 Let's update our previous feature test to leverage this improved factory set up:
 
 ```
 feature "view a particular book club's members" do
   scenario "see all members of a particular book club" do
-    book_club = FactoryGirl.create(:book_club)
-    emily_dickinson = FactoryGirl.create(:club_leader, book_club: book_club)
-    ts_eliot = FactoryGirl.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
+    book_club = FactoryBot.create(:book_club)
+    emily_dickinson = FactoryBot.create(:club_leader, book_club: book_club)
+    ts_eliot = FactoryBot.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
 
     visit "/book_clubs/#{book_club.id}"
 
@@ -293,8 +293,8 @@ Let's run the feature test we wrote before to make sure this is working as expec
 ```ruby
 feature "book club member directory" do
   scenario "view list of all book club members" do
-    emily_dickinson = FactoryGirl.create(:member)
-    walt_whitman = FactoryGirl.create(:member,first_name: "Walt", last_name: "Whitman", bio: "Yawp")
+    emily_dickinson = FactoryBot.create(:member)
+    walt_whitman = FactoryBot.create(:member,first_name: "Walt", last_name: "Whitman", bio: "Yawp")
 
     visit '/members'
 
@@ -309,14 +309,14 @@ end
 
 ###[Lists](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#building-or-creating-multiple-records) of Objects
 
-Now, so far our book club tests have only had a couple of members, but maybe we want to test a more realistic scenario wherein our book club has 15 members, 3 of whom are club leaders. Factory Girl can help us do this pretty easily with `create_list`. Here's how it might look:
+Now, so far our book club tests have only had a couple of members, but maybe we want to test a more realistic scenario wherein our book club has 15 members, 3 of whom are club leaders. Factory Bot can help us do this pretty easily with `create_list`. Here's how it might look:
 
 ```
 feature "view a book club's members" do
   scenario 'see all members of a particular book club' do
-    book_club = FactoryGirl.create(:book_club)
-    members = FactoryGirl.create_list(:member, 12, book_club: book_club)
-    leaders = FactoryGirl.create_list(:club_leader, 3, book_club: book_club)
+    book_club = FactoryBot.create(:book_club)
+    members = FactoryBot.create_list(:member, 12, book_club: book_club)
+    leaders = FactoryBot.create_list(:club_leader, 3, book_club: book_club)
 
     visit "/book_clubs/#{book_club.id}"
 
@@ -331,7 +331,7 @@ feature "view a book club's members" do
 end
 ```
 
-Listed below are some additional resources on using Factory Girl. *Note: These resources will presume you use Rails with ActiveRecord and FactoryGirl. It works the same way as in Sinatra with ActiveRecord.*
+Listed below are some additional resources on using Factory Bot. *Note: These resources will presume you use Rails with ActiveRecord and FactoryBot. It works the same way as in Sinatra with ActiveRecord.*
 
 - [Rails Gist](https://gist.github.com/cmkoller/1dcc8815669d02b5a793)
 - [Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md)
