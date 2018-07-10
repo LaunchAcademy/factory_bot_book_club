@@ -1,4 +1,4 @@
-#FactoryBot Clinic
+# FactoryBot Clinic
 
 FactoryBot is a gem that makes testing easier. It allows you to create "factories" for the objects your app is concerned with, thereby allowing you to more quickly set up tests for a feature or method. Once FactoryBot is set up, instead of needing to type this:
 
@@ -11,41 +11,40 @@ I can use something more simple, like this:
 ```
 let(:leader) { FactoryBot.create(:club_leader) }
 ```
-##Set Up in Sinatra
-
-- [Elise's Starter Code](https://github.com/EliseFitz15/factory_girl_sinatra_setup)
+## Set Up in Sinatra
 
 ```
- git clone https://github.com/EliseFitz15/factory_girl_sinatra_setup <YOUR_APP_NAME>
+ git clone https://github.com/LaunchAcademy/factory_bot_book_club.git <YOUR_APP_NAME>
  cd <YOUR_APP_NAME>
  bundle install
  rm -rf .git && git init && git add -A && git commit -m 'Initial commit'
 ```
 
-- First, add Factory Bot to your Gemfile:
+The following has already been done, but will be the steps to add FactoryBot to your apps in the future:
+  - First, add FactoryBot to your Gemfile:
 
-```ruby
-group :development, :test do
-  # ... other gems ...
-  gem 'factory_girl'
-end
-```
-- Run `bundle install` to install it!
-- Next, make a file at `spec/support/factories.rb`. This is where you'll be creating your factories.
-- Now open the spec_helper.rb file and add these lines to the top:
+  ```ruby
+  group :development, :test do
+    # ... other gems ...
+    gem 'factory_bot'
+  end
+  ```
+  - Run `bundle install` to install it!
+  - Next, make a file at `spec/support/factories.rb`. This is where you'll be creating your factories.
+  - Now open the spec_helper.rb file and add these lines to the top:
 
-```ruby
-require 'factory_girl'
-require_relative 'support/factories'
-```
+  ```ruby
+  require 'factory_bot'
+  require_relative 'support/factories'
+  ```
 
-- To create your database, open `config/database.yml` and update the file with names appropriate for your app. Then run `rake db:create`.
+  - To create your database, open `config/database.yml` and update the file with names appropriate for your app. Then run `rake db:create`.
 
-- Lastly, `require spec_helper` at the top of spec test files.
+  - Lastly, `require spec_helper` at the top of spec test files.
 
-##Creating Factories
+## Creating Factories
 
-###Setting Up Your Factory File
+### Setting Up Your Factory File
 
 Open up `spec/support/factories.rb`. Add the following code:
 
@@ -59,7 +58,7 @@ end
 
 You are now ready to write up your factories inside of this block!
 
-###Writing a Simple Factory ([Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Defining_factories))
+### Writing a Simple Factory ([Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Defining_factories))
 
 If we're using a Book Club example, we'll have `Book Club` objects and `Member` objects. Let's set these tables up in our database and write their associated models:
 
@@ -114,7 +113,7 @@ end
 
 It's that simple! Now every time I call `FactoryBot.create(:member)`, I'll have a standardized book club member (in this case, Emily Dickinson).
 
-###Using a Factory ([Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Using_factories))
+### Using a Factory ([Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Using_factories))
 
 Let's look at an example of how I would use this.
 
@@ -132,7 +131,7 @@ feature 'book club member directory' do
 end
 ```
 
-####Using Factories with Custom info
+#### Using Factories with Custom info
 
 But what if we want to customize some part of the Factory Bot created object? Let's try that out:
 
@@ -155,7 +154,7 @@ end
 
 You can override any of the attributes that your factory sets by passing in an argument to modify that attribute. In this example, we're changing the first name, last name, and bio of the factory to suit our needs. This allows us to avoid duplicating some of our work in mocking up the data needed to test things that book club members can do, but with custom values when needed.
 
-###Objects with Associations ([Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Associations))
+### Objects with Associations ([Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Associations))
 
 In our set up, a `Book Club` has many `Member`s, and a `Member` belongs to a `Book Club`. Usually when we create a member object, we'll know we want a book club object also. So we can add a factory for this purpose to our `factories.rb` file:
 
@@ -209,7 +208,7 @@ emily_dickinson = FactoryBot.create(:member, book_club: book_club)
 
 Now Emily will belong to the book club we already created, and the factory won't create a new book club when it creates her membership.
 
-###Different Kinds of Objects (aka [Inheritance](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Inheritance))
+### Different Kinds of Objects (aka [Inheritance](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Inheritance))
 
 Let's say when our book club members sign up, they can either check a box to offer to lead their book club during its meetings or not. Passing override values to our `member` factory might get old after a while if we need to write 15 feature tests where a book club leader is required. Let's go ahead and make a permanent factory for this kind of object. We can do this by inheriting most of the properties we want from the parent `member` object:
 
@@ -247,9 +246,9 @@ end
 
 ```
 
-##Fancier Factories
+## Fancier Factories
 
-###Objects with Uniqueness Constraints (aka [Sequencing](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md#Sequences))
+### Objects with Uniqueness Constraints (aka [Sequencing](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Sequences))
 
 As of right now, all book club members I create will have the same email (unless otherwise specified). What if I have a uniqueness constraint on book club members' emails, so I can't have duplicate emails in my database?
 
@@ -307,7 +306,7 @@ feature "book club member directory" do
 end
 ```
 
-###[Lists](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md#building-or-creating-multiple-records) of Objects
+###[Lists](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#building-or-creating-multiple-records) of Objects
 
 Now, so far our book club tests have only had a couple of members, but maybe we want to test a more realistic scenario wherein our book club has 15 members, 3 of whom are club leaders. Factory Bot can help us do this pretty easily with `create_list`. Here's how it might look:
 
@@ -334,6 +333,6 @@ end
 Listed below are some additional resources on using Factory Bot. *Note: These resources will presume you use Rails with ActiveRecord and FactoryBot. It works the same way as in Sinatra with ActiveRecord.*
 
 - [Rails Gist](https://gist.github.com/cmkoller/1dcc8815669d02b5a793)
-- [Documentation](http://www.rubydoc.info/gems/factory_girl/file/GETTING_STARTED.md)
-- [Horizon Reading](https://horizon.launchacademy.com/lessons/factory-girl)
-- [Horizon Reading on FG Associations](https://horizon.launchacademy.com/lessons/factory-girl-associations)
+- [Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md)
+- [Horizon Reading](https://horizon.launchacademy.com/lessons/factory-bot)
+- [Horizon Reading on FG Associations](https://horizon.launchacademy.com/lessons/factory-bot-associations)
