@@ -10,7 +10,7 @@ get '/members' do
   erb :index
 end
 
-get '/book_club/:id' do
+get '/book_clubs/:id' do
   @book_club = BookClub.find(params[:id])
   @book_club_members = @book_club.members
   @leader = @book_club_members.find_by(leader: true)
