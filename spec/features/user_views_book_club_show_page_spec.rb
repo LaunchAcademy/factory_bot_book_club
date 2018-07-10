@@ -16,8 +16,6 @@ feature "book club show page" do
       book_club: book_club1
     )
 
-    binding.pry
-
     visit "/book_clubs/#{book_club1.id}"
 
     expect(page).to have_content(book_club1.name)
@@ -26,7 +24,5 @@ feature "book club show page" do
     expect(page).to have_content(walt.first_name)
     expect(page).to have_content(walt.email)
     expect(page).to have_content "#{brianna.first_name} #{brianna.last_name}, Leader"
-
-    save_and_open_page
   end
 end
