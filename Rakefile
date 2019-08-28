@@ -1,4 +1,4 @@
-require "./app"
+require "./server"
 require "sinatra/activerecord/rake"
 require "rspec/core/rake_task"
 
@@ -11,4 +11,3 @@ begin
 rescue LoadError
   puts "Please 'bundle', first."
 end
-

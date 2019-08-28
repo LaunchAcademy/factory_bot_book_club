@@ -1,0 +1,8 @@
+<h1>Join One of Our Book Clubs!</h1>
+<ul>
+  <% @book_clubs.each do |club| %>
+    <li>
+      <%= club.name %>: <%= club.location %>
+    </li>
+  <% end %>
+</ul>
