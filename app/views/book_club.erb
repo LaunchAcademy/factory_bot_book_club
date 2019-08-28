@@ -1,9 +1,0 @@
-<h1><%= @book_club.name %></h1>
-
-<% if @leader %>
-<p><%= @leader.first_name %> <%= @leader.last_name %>, Leader</p>
-<% end %>
-
-<% @book_club_members.each do |member| %>
-  <%= member.first_name %> <%= member.email %> <br />
-<% end %>

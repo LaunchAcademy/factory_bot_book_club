@@ -5,7 +5,7 @@ require 'database_cleaner'
 require 'factory_bot'
 require_relative 'support/factories'
 
-require_relative '../app.rb'
+require_relative '../server.rb'
 
 set :environment, :test
 
