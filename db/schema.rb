@@ -10,31 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_211433) do
+ActiveRecord::Schema.define(version: 0) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "book_clubs", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_book_clubs_on_name", unique: true
-  end
-
-  create_table "members", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "email", null: false
-    t.string "favorite_book"
-    t.text "bio"
-    t.boolean "leader", default: false, null: false
-    t.bigint "book_club_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_club_id"], name: "index_members_on_book_club_id"
-    t.index ["email"], name: "index_members_on_email", unique: true
-  end
 
 end
