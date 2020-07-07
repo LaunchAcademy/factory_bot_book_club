@@ -19,6 +19,7 @@ end
 
 get '/book_clubs' do
   @book_clubs = BookClub.all
+  # binding.pry
   erb :"book_clubs/index"
 end
 
