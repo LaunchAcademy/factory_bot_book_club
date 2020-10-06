@@ -14,7 +14,14 @@ enable :sessions
 
 get '/members' do
   @members = Member.all
+  
   erb :'members/index'
+end
+
+get '/book_clubs' do
+  @book_clubs = BookClub.all
+  
+  erb :'book_clubs/index'
 end
 
 get '/book_clubs/:id' do
