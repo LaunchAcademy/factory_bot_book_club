@@ -12,22 +12,20 @@ set :bind, '0.0.0.0'  # bind to all interfaces
 
 enable :sessions
 
-get '/members' do
-  @members = Member.all
+# get '/members' do
   
-  erb :'members/index'
-end
+# end
 
-get '/book_clubs' do
-  @book_clubs = BookClub.all
-  
-  erb :'book_clubs/index'
-end
+# get '/book_clubs' do
 
-get '/book_clubs/:id' do
-  @book_club = BookClub.find(params[:id])
-  @book_club_members = @book_club.members
-  @leader = @book_club_members.find_by(leader: true)
+# end
 
-  erb :'book_clubs/show'
-end
+# get '/book_clubs/:id' do
+#   @book_club = BookClub.find(params[:id])
+#   @book_club_members = @book_club.members
+#   @leader = @book_club_members.find_by(leader: true)
+
+#   erb :'book_clubs/show'
+# end
+
+

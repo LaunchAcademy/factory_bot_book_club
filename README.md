@@ -1,3 +1,28 @@
+# Building a Simple Sinatra App
+
+* Generate a members index page, and a book club index page 
+
+**Member**
+- name (string)
+- location (string)
+
+**Book Club** 
+- first_name (string)
+- last_name (string)
+- email (string)
+- bio (long string)
+- favorite_book (string)
+- leader (boolean)
+- book_club (integer)
+
+Your views have been created for you!
+
+Use the tests to get your features to pass. 
+
+Be sure to run `bundle exec rake:db:test:prepare` after running any migrations.
+
+The *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file. 
+
 # FactoryBot Clinic
 
 FactoryBot is a gem that makes testing easier. It allows you to create "factories" for the objects your app is concerned with, thereby allowing you to more quickly set up tests for a feature or method. Once FactoryBot is set up, instead of needing to type this:
