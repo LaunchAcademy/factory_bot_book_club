@@ -12,13 +12,17 @@ set :bind, '0.0.0.0'  # bind to all interfaces
 
 enable :sessions
 
-# get '/members' do
+get '/members' do
+  @members = Member.all
   
-# end
+  erb :"members/index"
+end
 
-# get '/book_clubs' do
+get '/book_clubs' do
+  @book_clubs = BookClub.all 
 
-# end
+  erb :"book_clubs/index"
+end
 
 # get '/book_clubs/:id' do
 #   @book_club = BookClub.find(params[:id])
