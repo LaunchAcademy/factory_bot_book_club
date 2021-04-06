@@ -5,6 +5,8 @@
 **Member**
 - name (string, req) 
 - location (string)
+- leader (boolean, req)
+
 
 **Book Club** 
 - first_name (string, req)
@@ -12,7 +14,6 @@
 - email (string, req)
 - bio (long string)
 - favorite_book (string)
-- leader (boolean, req)
 - book_club (integer, req)
 
 Your views have been created for you!
