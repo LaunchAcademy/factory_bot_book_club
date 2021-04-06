@@ -3,7 +3,7 @@
 #
 # Dir['app/**/*.rb'].each { |file| require_relative file }
 # set :views, 'app/views'
-set :environment, :development
+# set :environment, :development
 
 require 'sinatra'
 require_relative 'config/application'
@@ -24,9 +24,13 @@ get '/book_clubs' do
   erb :"book_clubs/index"
 end
 
-# get '/book_clubs/:id' do
+get '/book_clubs/:id' do
+  @book_club = BookClub.find(params[:id])
+  @members = @book_club.members 
+  
+  #leader
 
-#   erb :'book_clubs/show'
-# end
+  erb :'book_clubs/show'
+end
 
 

@@ -14,6 +14,8 @@ FactoryBot.define do
     end
   end
 
+
+
   factory :book_club do
     name {"The book club"}
     location {"Cambridge, MA"}

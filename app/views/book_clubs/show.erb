@@ -1,5 +1,11 @@
 <h1><%= @book_club.name %></h1>
 
+  <% @members.each do |member| %>
+    <li>
+      <%= member.first_name %>  
+    </li>
+  <% end %>
+
 <% if @leader %>
 <p>
   <%= @leader.first_name %> <%= @leader.last_name %>, Leader

@@ -5,7 +5,7 @@
 **Member**
 - first_name (string, req)
 - last_name (string, req)
-- email (string, req)
+- email (string, unique, req)
 - bio (long string)
 - favorite_book (string)
 - leader (boolean, req)
@@ -22,6 +22,15 @@ Use the tests to get your features to pass.
 Be sure to run `bundle exec rake:db:test:prepare` after running any migrations.
 
 The *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file. 
+
+
+## Levels of Validations 
+
+* Synchronous JavaScript validation on our React forms 
+
+* **Model Level Validations** with ActiveRecord 
+
+* Simple "constraints" on our tables in Postgres (e.g. null: false, unique index, datatype constraints)
 
 # FactoryBot Clinic
 

@@ -2,7 +2,7 @@
 <ul>
   <% @book_clubs.each do |club| %>
     <li>
-      <%= club.name %>: <%= club.location %>
+      <a href=<%="/book_clubs/#{club.id}"%> > <%= club.name %> </a> : <%= club.location %>
     </li>
   <% end %>
 </ul>
