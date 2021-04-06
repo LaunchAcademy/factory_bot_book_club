@@ -5,4 +5,3 @@
 - create custom method "members" that retrieves related members with .where 
 - let! vs. let
 - refactoring with factorybot brief overview
-- 

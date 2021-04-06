@@ -3,17 +3,17 @@
 * Generate a members index page, and a book club index page 
 
 **Member**
-- name (string)
+- name (string, req) 
 - location (string)
 
 **Book Club** 
-- first_name (string)
-- last_name (string)
-- email (string)
+- first_name (string, req)
+- last_name (string, req)
+- email (string, req)
 - bio (long string)
 - favorite_book (string)
-- leader (boolean)
-- book_club (integer)
+- leader (boolean, req)
+- book_club (integer, req)
 
 Your views have been created for you!
 
