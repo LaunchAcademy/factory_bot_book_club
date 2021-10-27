@@ -1,0 +1,23 @@
+<div>
+    <%= @member.first_name %>
+    <br>
+
+    <%= @member.last_name %>
+    <br>
+
+    <%= @member.email %>
+    <br>
+
+    <%= @member.bio %>
+    <br>
+
+    <%= @member.favorite_book %>
+</div>
+
+<br>
+
+<div>
+    <% if @member.leader %>
+        This member is the leader of <%= @member.book_club%>
+    <% end %>
+</div>
