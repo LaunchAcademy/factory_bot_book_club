@@ -1,9 +1,5 @@
 # For development and testing environments, run the following code
 configure :development, :test do
-  # Load environment variables from .env file
-  require 'dotenv'
-  Dotenv.load
-
   # Load the following libraries
   require 'pry'
 end

@@ -1,23 +1,24 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'pg', '~> 1.00'
-gem 'activerecord', '~> 5.2'
-gem 'rake'
-gem "sinatra", "~> 2.0"
+gem "activerecord", "~> 6.1"
+gem "pg", "~> 1.0"
+gem "puma"
+gem "rake"
+gem "sinatra", "~> 2.1"
+gem "sinatra-activerecord", "~> 2.0.13"
 gem "sinatra-contrib"
-gem 'sinatra-activerecord', '2.0.13'
-gem 'sinatra-flash'
+gem "sinatra-flash"
 
 group :development, :test do
-  gem 'launchy'
-  gem 'dotenv'
-  gem 'pry'
-  gem 'capybara', '~> 2.15'
-  gem 'rspec', '~> 3.7'
-  gem 'poltergeist'
-  gem 'database_cleaner'
-  gem 'factory_bot'
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
-  gem 'valid_attribute'
+  gem "capybara", "~> 2.15"
+  gem "database_cleaner"
+  gem "dotenv"
+  gem "factory_bot"
+  gem "launchy"
+  gem "poltergeist"
+  gem "pry"
+  gem "rspec", "~> 3.7"
+  gem "shoulda", "~> 3.5"
+  gem "shoulda-matchers", "~> 2.0"
+  gem "valid_attribute"
 end
