@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "book club index page" do
-  let!(:book_club_one) { BookClub.create(name: "ezLaunchers", location: "5th floor patio") }
+  let!(:book_club_one) { BookClub.create(name: "Sarcastic Virtual Robot Launchers", location: "7th floor secret storage") }
   let!(:book_club_two) { BookClub.create(name: "Magical Book Club", location: "in your heart all along") }
   
   scenario "user views all book clubs on the index page" do
