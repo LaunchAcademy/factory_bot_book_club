@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_26_204401) do
+ActiveRecord::Schema.define(version: 2021_10_27_153418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2021_10_26_204401) do
     t.string "name", null: false
     t.string "location", null: false
     t.integer "maximum_membership_count"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "favorite_book"
+    t.boolean "leader", null: false
+    t.text "bio"
+    t.bigint "book_club_id", null: false
+    t.index ["book_club_id"], name: "index_members_on_book_club_id"
   end
 
 end

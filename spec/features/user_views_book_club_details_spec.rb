@@ -10,5 +10,7 @@ feature "book club show page" do
     visit "/book_clubs/#{book_club_one.id}"
 
     expect(page).to have_content(book_club_one.name)
+    expect(page).to have_content(casi.first_name)
+    expect(page).to have_content(zach.first_name)
   end
 end

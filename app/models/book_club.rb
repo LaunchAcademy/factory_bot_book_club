@@ -8,4 +8,6 @@ class BookClub < ActiveRecord::Base
         allow_nil: true
     }
 
+    has_many :members 
+
 end

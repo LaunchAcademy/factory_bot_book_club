@@ -45,7 +45,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
-    nokogiri (1.12.5-arm64-darwin)
+    nokogiri (1.12.5-x86_64-darwin)
       racc (~> 1.4)
     pg (1.2.3)
     poltergeist (1.18.1)
@@ -113,8 +113,7 @@ GEM
     zeitwerk (2.5.1)
 
 PLATFORMS
-  arm64-darwin-20
-  ruby
+  x86_64-darwin-19
 
 DEPENDENCIES
   activerecord (~> 6.1)
@@ -138,4 +137,4 @@ DEPENDENCIES
   valid_attribute
 
 BUNDLED WITH
-   2.2.30
+   2.2.16
