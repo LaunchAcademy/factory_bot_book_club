@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_153418) do
+ActiveRecord::Schema.define(version: 2021_10_27_155621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,13 @@ ActiveRecord::Schema.define(version: 2021_10_27_153418) do
     t.string "favorite_book"
     t.boolean "leader", null: false
     t.text "bio"
+  end
+
+  create_table "signups", force: :cascade do |t|
+    t.bigint "member_id", null: false
     t.bigint "book_club_id", null: false
-    t.index ["book_club_id"], name: "index_members_on_book_club_id"
+    t.index ["book_club_id"], name: "index_signups_on_book_club_id"
+    t.index ["member_id"], name: "index_signups_on_member_id"
   end
 
 end

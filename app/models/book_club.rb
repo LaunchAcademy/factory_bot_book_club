@@ -8,6 +8,7 @@ class BookClub < ActiveRecord::Base
         allow_nil: true
     }
 
-    has_many :members 
+    has_many :signups
+    has_many :members, through: :signups
 
 end
