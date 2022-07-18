@@ -89,8 +89,8 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.1)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.13)
-      activerecord (>= 3.2)
+    sinatra-activerecord (2.0.23)
+      activerecord (>= 4.1)
       sinatra (>= 1.0)
     sinatra-contrib (2.2.1)
       multi_json
@@ -112,6 +112,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  arm64-darwin-20
   ruby
 
 DEPENDENCIES
@@ -121,15 +122,16 @@ DEPENDENCIES
   dotenv
   factory_bot
   launchy
-  pg (~> 1.00)
+  pg (~> 1.0)
   poltergeist
   pry
+  puma
   rake
   rspec (~> 3.7)
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
-  sinatra (~> 2.0)
-  sinatra-activerecord (= 2.0.13)
+  sinatra (~> 2.1)
+  sinatra-activerecord (~> 2.0.13)
   sinatra-contrib
   sinatra-flash
   valid_attribute

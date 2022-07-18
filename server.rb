@@ -1,10 +1,3 @@
-# require 'sinatra'
-# require 'sinatra/activerecord'
-#
-# Dir['app/**/*.rb'].each { |file| require_relative file }
-# set :views, 'app/views'
-# set :environment, :development
-
 require 'sinatra'
 require_relative 'config/application'
 
@@ -30,4 +23,6 @@ get '/book_clubs/:id' do
   erb :'book_clubs/show'
 end
 
+post "/book_clubs" do 
 
+end

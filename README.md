@@ -3,10 +3,6 @@
 * Generate a members index page, and a book club index page 
 
 **Member**
-- name (string, req) 
-- location (string)
-
-**Book Club** 
 - first_name (string, req)
 - last_name (string, req)
 - email (string, req)
@@ -14,6 +10,10 @@
 - favorite_book (string)
 - leader (boolean, req)
 - book_club (integer, req)
+
+**Book Club** 
+- name (string, req) 
+- location (string)
 
 Your views have been created for you!
 

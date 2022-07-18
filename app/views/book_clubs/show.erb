@@ -4,3 +4,10 @@
 <h3> Book Club members (only for associations)</h3>
 
 
+<ul>
+  <% @members.each do |member| %>
+    <li>
+      <%= member.first_name %>
+    </li>
+  <% end %>
+</ul>
