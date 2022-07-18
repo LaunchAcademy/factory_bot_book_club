@@ -14,7 +14,7 @@ feature 'when a regular user vists the member index page' do
 
     visit '/members'
 
-    expect(page).to have_content "All Book Club Members"
+    expect(page).to have_content "All of Our Members"
     expect(page).to have_content(casi.first_name)
     expect(page).to have_content(casi.last_name)
     expect(page).to have_content(zach.first_name)
