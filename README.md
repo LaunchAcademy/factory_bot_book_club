@@ -21,7 +21,7 @@ Use the tests to get your features to pass.
 
 Be sure to run `bundle exec rake:db:test:prepare` after running any migrations.
 
-The *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file. 
+The commented out code in the *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file. 
 
 # FactoryBot Clinic
 
