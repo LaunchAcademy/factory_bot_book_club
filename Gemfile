@@ -1,11 +1,9 @@
 source "https://rubygems.org"
 
-gem "activerecord", "~> 6.1"
-gem "pg", "~> 1.0"
-gem "puma"
-gem "rake"
-gem "sinatra", "~> 2.1"
-gem "sinatra-activerecord", "~> 2.0.13"
+gem 'pg', '~> 1.00'
+gem 'activerecord', '~> 6.1.4'
+gem 'rake'
+gem "sinatra", "~> 2.0"
 gem "sinatra-contrib"
 gem "sinatra-flash"
 

@@ -1,10 +1,9 @@
 <h1><%= @book_club.name %></h1>
+<p>Located at: <%= @book_club.location %> </p>
+
+<h3> Book Club members (only for associations)</h3>
 
 
 <ul>
-  <% @members.each do |member| %>
-    <li>
-      <%= member.first_name %>
-    </li>
-  <% end %>
+
 </ul>
