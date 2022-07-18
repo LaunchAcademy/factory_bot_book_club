@@ -5,8 +5,10 @@ feature 'when a regular user vists the member index page' do
 # 
   let!(:casi) { Member.create(first_name: "Casi", last_name: "Newell", email: "casi@ezCater.com", bio: "smarty smart smart" , favorite_book: "Something russian", leader: true, book_club_id: book_club_one.id ) }
   let!(:zach) { Member.create(first_name: "Zach", last_name: "Martin", email: "zach@ezCater.com", bio: "very sophisticated", favorite_book: "Game of Thrones", leader: false, book_club_id: book_club_one.id) }
-  # let!(:brianna) { Member.create(first_name: "Brianna", last_name: "Kincart", email: "brianna@ezCater.com", bio: "she's alright I guess", favorite_book: "The Alchemist", leader: false, book_club_id: book_club_one.id) }
-  let!(:brianna) { FactoryBot.create(:member, book_club_id: book_club_one.id) }
+  let!(:brianna) { Member.create(first_name: "Brianna", last_name: "Kincart", email: "brianna@ezCater.com", bio: "she's alright I guess", favorite_book: "The Alchemist", leader: false, book_club_id: book_club_one.id) }
+
+  # requires factorybot knowledge
+  # let!(:brianna) { FactoryBot.create(:member, book_club_id: book_club_one.id) }
 
   scenario 'user can see all book club members from all clubs' do
 

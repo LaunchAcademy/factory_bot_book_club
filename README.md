@@ -38,15 +38,9 @@ let(:leader) { FactoryBot.create(:club_leader) }
 ```
 ## Set Up in Sinatra
 
-```
- git clone https://github.com/LaunchAcademy/factory_bot_book_club.git <YOUR_APP_NAME>
- cd <YOUR_APP_NAME>
- bundle install
- rm -rf .git && git init && git add -A && git commit -m 'Initial commit'
-```
-
 The following has already been done, but will be the steps to add FactoryBot to your apps in the future:
-  - First, add FactoryBot to your Gemfile:
+
+First, add FactoryBot to your Gemfile:
 
   ```ruby
   group :development, :test do
@@ -63,7 +57,7 @@ The following has already been done, but will be the steps to add FactoryBot to 
   require_relative 'support/factories'
   ```
 
-  - To create your database, open `config/database.yml` and update the file with names appropriate for your app. Then run `rake db:create`.
+  - To create your database, open `config/database.yml` and update the file with database names appropriate for your app. Then run `rake db:create`.
 
   - Lastly, `require spec_helper` at the top of spec test files.
 
@@ -87,7 +81,7 @@ You are now ready to write up your factories inside of this block!
 
 If we're using a Book Club example, we'll have `Book Club` objects and `Member` objects. Let's set these tables up in our database and write their associated models:
 
-```
+```ruby
 rake db:create_migration NAME=create_book_clubs
 
 class CreateBookClubs < ActiveRecord::Migration
@@ -100,7 +94,10 @@ class CreateBookClubs < ActiveRecord::Migration
 end
 
 class BookClub < ActiveRecord::Base
-  has_many :members
+
+  # requires knowledge of associations
+  # has_many :members
+
 end
 
 rake db:create_migration NAME=create_members
@@ -120,7 +117,11 @@ class CreateMembers < ActiveRecord::Migration
 end
 
 class Member < ActiveRecord::Base
-  belongs_to :book_club
+
+  # requires knowledge of associations
+  # belongs_to :book_club
+
+
 end
 ```
 
@@ -136,16 +137,19 @@ factory :member do
 end
 ```
 
+Note that each of lines is actually a method being called, with an argument of the value you want your object to be created with.
+
 It's that simple! Now every time I call `FactoryBot.create(:member)`, I'll have a standardized book club member (in this case, Emily Dickinson).
 
 ### Using a Factory ([Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Using_factories))
 
 Let's look at an example of how I would use this.
 
-```
+```ruby
 feature 'book club member directory' do
+  let!(:emily_dickinson) { FactoryBot.create(:member) }
+
   scenario "view list of all book club members" do
-    emily_dickinson = FactoryBot.create(:member)
 
     visit '/members'
 
@@ -160,11 +164,12 @@ end
 
 But what if we want to customize some part of the Factory Bot created object? Let's try that out:
 
-```
+```ruby
 feature "book club member directory" do
+  let!(:emily_dickinson) { FactoryBot.create(:member)}
+  let!(:walt_whitman) { FactoryBot.create(:member, first_name: "Walt", last_name: "Whitman", bio: "Yawp") }
+
   scenario "view list of all book club members" do
-    emily_dickinson = FactoryBot.create(:member)
-    walt_whitman = FactoryBot.create(:member,first_name: "Walt", last_name: "Whitman", bio: "Yawp")
 
     visit '/members'
 
@@ -180,6 +185,8 @@ end
 You can override any of the attributes that your factory sets by passing in an argument to modify that attribute. In this example, we're changing the first name, last name, and bio of the factory to suit our needs. This allows us to avoid duplicating some of our work in mocking up the data needed to test things that book club members can do, but with custom values when needed.
 
 ### Objects with Associations ([Documentation](http://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md#Associations))
+
+**Note**: you will need to be fluent in basic ActiveRecord associations in order to use the following code snippets.
 
 In our set up, a `Book Club` has many `Member`s, and a `Member` belongs to a `Book Club`. Usually when we create a member object, we'll know we want a book club object also. So we can add a factory for this purpose to our `factories.rb` file:
 
@@ -207,18 +214,21 @@ Now every time we create a new book club member, there will be a book club to go
 
 Here's an example:
 
-```
+```ruby
 feature "view a particular book club's members" do
+  let!(:emily_dickinson) { FactoryBot.create(:member)}
+  let(:book_club) { emily_dickinson.book_club }
+  let!(:walt_whitman) { FactoryBot.create(:member, first_name: "Walt", last_name: "Whitman", bio: "Yawp", book_club: book_club ) }
+
+  
   scenario "see all members of a particular book club" do
-    emily_dickinson = FactoryBot.create(:member)
-    book_club = emily_dickinson.book_club
-    ts_eliot = FactoryBot.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
+
 
     visit "/book_clubs/#{book_club.id}"
 
     expect(page).to have_content(book_club.name)
     expect(page).to have_content(emily_dickinson.first_name)
-    expect(page).to have_content(ts_eliot.first_name)
+    expect(page).to have_content(walt_whitman.first_name)
   end
 end
 
@@ -226,7 +236,7 @@ end
 
 Or, let's say we want to add a book club member to a specific, pre-existing club. We can just overwrite this default information like before:
 
-```
+```ruby
 book_club = FactoryBot.create(:book_club, name: "Cranky Poet's Society")
 emily_dickinson = FactoryBot.create(:member, book_club: book_club)
 ```
@@ -255,17 +265,20 @@ If we call `FactoryBot.create(:club_leader)`, all of the default traits we set u
 
 Let's update our previous feature test to leverage this improved factory set up:
 
-```
+```ruby
 feature "view a particular book club's members" do
   scenario "see all members of a particular book club" do
-    book_club = FactoryBot.create(:book_club)
-    emily_dickinson = FactoryBot.create(:club_leader, book_club: book_club)
-    ts_eliot = FactoryBot.create(:member, first_name: "Thomas", last_name: "Eliot", book_club: book_club)
+    let!(:emily_dickinson) { FactoryBot.create(:club_leader)}
+    let(:book_club) { emily_dickinson.book_club }
+    let!(:walt_whitman) { FactoryBot.create(:member, first_name: "Walt", last_name: "Whitman", bio: "Yawp", book_club: book_club) }
+
 
     visit "/book_clubs/#{book_club.id}"
 
+    expect(page).to have_content(book_club.name)
     expect(page).to have_content("#{emily_dickinson.first_name} (Leader)")
-    expect(page).to have_content(ts_eliot.first_name)
+    expect(page).to have_content(walt_whitman.first_name)
+
   end
 end
 
@@ -279,7 +292,7 @@ As of right now, all book club members I create will have the same email (unless
 
 Let's write the migration that would modify this:
 
-```
+```ruby
 rake db:create_migration NAME=make_member_emails_unique
 
 class MakeMemberEmailsUnique < ActiveRecord::Migration
@@ -292,7 +305,7 @@ end
 
 Let's also add a uniqueness constraint on the class/model itself:
 
-```
+```ruby
 class Member < ActiveRecord::Base
   belongs_to :book_club
 
@@ -331,11 +344,11 @@ feature "book club member directory" do
 end
 ```
 
-###[Lists](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#building-or-creating-multiple-records) of Objects
+### [Lists](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#building-or-creating-multiple-records) of Objects
 
 Now, so far our book club tests have only had a couple of members, but maybe we want to test a more realistic scenario wherein our book club has 15 members, 3 of whom are club leaders. Factory Bot can help us do this pretty easily with `create_list`. Here's how it might look:
 
-```
+```ruby
 feature "view a book club's members" do
   scenario 'see all members of a particular book club' do
     book_club = FactoryBot.create(:book_club)
