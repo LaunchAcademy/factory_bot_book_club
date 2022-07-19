@@ -5,4 +5,12 @@ zach = Member.create(first_name: "Zach", last_name: "Martin", email: "zach@ezCat
 brianna = Member.create(first_name: "Brianna", last_name: "Kincart", email: "brianna@ezCater.com", bio: "she's alright I guess", favorite_book: "The Alchemist", leader: false, book_club_id: book_club_one.id)
 
 book_club_two = BookClub.create(name: "Magical Book Club", location: "in your heart all along")
-unicorn = Member.create(first_name: "Todd", last_name: "The Chosen Unicorn", email: "todd@ezCater.com", bio: "blessed be", favorite_book: "The Last Unicorn", leader: true, book_club_id: book_club_two.id)
+unicorn = Member.create(
+    first_name: "Todd", 
+    last_name: "The Chosen Unicorn", 
+    email: "todd@ezCater.com", 
+    bio: "blessed be", 
+    favorite_book: "The Last Unicorn", 
+    leader: true, 
+    book_club_id: book_club_two.id
+    )

@@ -5,5 +5,9 @@
 
 
 <ul>
-
+    <% @members.each do |member| %>
+    <li>
+      <%= member.first_name %> <%= member.last_name %>
+    </li>
+  <% end %>
 </ul>
