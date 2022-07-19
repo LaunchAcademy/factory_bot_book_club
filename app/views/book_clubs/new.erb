@@ -1,6 +1,17 @@
 <h1>Book Club New Form </h2>
 
-<form method='POST' action="/book_clubs" />
+<form method='POST' action="/book-clubs" />
+    <label for="name"> Name:
+        <input type="text" name="name" id="name">
+    </label>
 
+    <label for="location"> Location:
+        <input type="text" name="location" id="location">
+    </label>
 
+    <input type="submit" class="button" value="Add Book Club" >
 </form>
+
+<% if @errors %>
+    <p class="red"><%= @errors %></p>
+<% end %>

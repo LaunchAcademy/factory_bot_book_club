@@ -8,7 +8,7 @@ feature "book club show page" do
   # let(:kerrin) { Member.create(first_name: "Kerrin", last_name: "Gillis", email: "kerrin.gillis@launchacademy.com", bio: "very sophisticated", favorite_book: "Game of Thrones", leader: false, book_club: book_club_one) }
   scenario "user views book club details on show page" do
     
-    visit "/book_clubs/#{book_club_one.id}"
+    visit "/book-clubs/#{book_club_one.id}"
     
     expect(page).to have_content(book_club_one.name)
     expect(page).to have_content(book_club_one.location)

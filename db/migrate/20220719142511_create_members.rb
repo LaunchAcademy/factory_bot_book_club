@@ -13,12 +13,3 @@ class CreateMembers < ActiveRecord::Migration[6.1]
     end
   end
 end
-
-
-# first_name (string, req)
-# last_name (string, req)
-# email (string, req)
-# bio (long string)
-# favorite_book (string)
-# leader (boolean, req)
-# book_club (integer, req)

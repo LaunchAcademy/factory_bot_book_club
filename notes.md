@@ -1,4 +1,4 @@
-## Overview Of Lesson 
+# Overview Of Lesson - Building an ActiveRecord App
 Run the app and review
 - go over overview of app features
 - go over server.rb
@@ -6,14 +6,25 @@ Run the app and review
 - models 
 - seeds
 
-Tests 
+## Tests 
  - let operator review
  - spec_helper
 
 
-Building the App
+## Building the App
 - migration / model / console / feature
 
-Time Permitting 
+## Time Permitting 
 - Factorybot basics 
 
+-----------
+# Overview Of Lesson - Validations 
+- build out a form 
+- setup a post route, sans validations 
+- experiment with brief custom server.rb presence validation
+- move to model file
+- replace with ActiveRecord validation 
+
+
+-----------
+# Overview Of Lesson - Associations 
