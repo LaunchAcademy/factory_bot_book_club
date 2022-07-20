@@ -38,7 +38,8 @@ end
 get '/book-clubs/:id' do
 
   @book_club = BookClub.find(params[:id])
-  @members = Member.where(book_club_id: @book_club.id)
+  @members = @book_club.members
+  # @members = Member.where(book_club_id: @book_club.id)
 
   erb :'book_clubs/show'
 end

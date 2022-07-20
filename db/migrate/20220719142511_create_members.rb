@@ -7,7 +7,8 @@ class CreateMembers < ActiveRecord::Migration[6.1]
       t.text :bio
       t.string :favorite_book 
       t.boolean :leader, null: false, default: false 
-      t.integer :book_club_id, null: false
+      # t.belongs_to :book_club, null: false
+      # t.integer :book_club_id, null: false
 
       t.timestamps null: false
     end
