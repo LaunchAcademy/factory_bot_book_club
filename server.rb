@@ -15,12 +15,28 @@ get '/book_clubs' do
   erb :"book_clubs/index"
 end
 
-get '/book_clubs/:banana' do
-  binding.pry
-  @book_club = BookClub.find(params["banana"])
+get '/book_clubs/new' do
+  erb :"book_clubs/new"
+end
+
+get '/book_clubs/:id' do
+  # binding.pry
+  @book_club = BookClub.find(params["id"])
   erb :'book_clubs/show'
 end
 
 post "/book_clubs" do 
+  # binding.pry
+  @name = params["name"]
+  @location = params["location"]
+  new_book_club = BookClub.new(name: params["name"], location: params["location"])
 
+  if new_book_club.save
+    redirect "/book_clubs"
+  else
+    # binding.pry
+    @errors = new_book_club.errors.full_messages
+    erb :"book_clubs/new"
+  end
+  
 end

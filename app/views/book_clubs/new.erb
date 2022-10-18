@@ -1,6 +1,19 @@
 <h1>Book Club New Form </h2>
 
-<form method='POST' action="/book_clubs" />
+<% if @errors %>
+  <% @errors.each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+<% end %>
 
+<form method='POST' action="/book_clubs">
+  <label for="name">Name:
+    <input type="text" id="name" name="name" value="<%= @name %>" />
+  </label>
+  
+  <label for="location">Location:
+    <input type="text" id="location" name="location" value="<%= @location %>" />
+  </label>
 
+  <input type="submit" value="Add Book Club" />
 </form>
