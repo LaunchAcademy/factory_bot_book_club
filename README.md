@@ -1,8 +1,9 @@
 # Building a Simple Sinatra App
 
-* Generate a members index page, and a book club index page 
+* Generate a members index page, and a book club index page
 
 **Member**
+
 - first_name (string, req)
 - last_name (string, req)
 - email (string, req)
@@ -11,29 +12,30 @@
 - leader (boolean, req)
 - book_club (integer, req)
 
-**Book Club** 
-- name (string, req) 
+**Book Club**
+
+- name (string, req)
 - location (string)
 
 Your views have been created for you!
 
-Use the tests to get your features to pass. 
+Use the tests to get your features to pass.
 
 Be sure to run `bundle exec rake:db:test:prepare` after running any migrations.
 
-The commented out code in the *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file. 
+The commented out code in the *user_views_book_club_details* spec will require knowledge of ActiveRecord Associations in order to complete, as well as an addition to the provided `erb` file.
 
 # FactoryBot Clinic
 
 FactoryBot is a gem that makes testing easier. It allows you to create "factories" for the objects your app is concerned with, thereby allowing you to more quickly set up tests for a feature or method. Once FactoryBot is set up, instead of needing to type this:
 
-```
+```no-highlight
 let(:leader) { Member.create(first_name: "Emily", last_name: "Dickinson", email: "nobody@nobodytoo.org", bio: "I don't see what's so great about leaving the house.", favorite_book: "Aurora Leigh", leader: true) }
 ```
 
 I can use something more simple, like this:
 
-```
+```no-highlight
 let(:leader) { FactoryBot.create(:club_leader) }
 ```
 ## Set Up in Sinatra
