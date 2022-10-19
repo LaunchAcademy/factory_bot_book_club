@@ -20,8 +20,8 @@ get '/book_clubs/new' do
 end
 
 get '/book_clubs/:id' do
-  # binding.pry
   @book_club = BookClub.find(params["id"])
+  @members = @book_club.members
   erb :'book_clubs/show'
 end
 
