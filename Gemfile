@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem 'pg', '~> 1.00'
 gem 'activerecord', '~> 6.1.4'
 gem 'rake'
-gem "sinatra", "~> 2.0"
+gem "sinatra", "~> 2.2"
 gem "sinatra-contrib"
 gem "sinatra-flash"
 
