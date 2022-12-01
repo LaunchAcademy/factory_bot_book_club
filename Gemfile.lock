@@ -43,10 +43,12 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.16.2)
     multi_json (1.15.0)
-    mustermann (1.1.2)
+    mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.13.7)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.7-arm64-darwin)
       racc (~> 1.4)
     pg (1.4.1)
     poltergeist (1.18.1)
@@ -59,7 +61,7 @@ GEM
     public_suffix (4.0.7)
     racc (1.6.0)
     rack (2.2.4)
-    rack-protection (2.2.1)
+    rack-protection (2.2.3)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -84,23 +86,20 @@ GEM
     shoulda-context (1.2.2)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    sinatra (2.2.1)
-      mustermann (~> 1.0)
+    sinatra (2.2.3)
+      mustermann (~> 2.0)
       rack (~> 2.2)
-      rack-protection (= 2.2.1)
+      rack-protection (= 2.2.3)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.23)
-      activerecord (>= 4.1)
-      sinatra (>= 1.0)
-    sinatra-contrib (2.2.1)
+    sinatra-contrib (2.2.3)
       multi_json
-      mustermann (~> 1.0)
-      rack-protection (= 2.2.1)
-      sinatra (= 2.2.1)
+      mustermann (~> 2.0)
+      rack-protection (= 2.2.3)
+      sinatra (= 2.2.3)
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
-    tilt (2.0.10)
+    tilt (2.0.11)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     valid_attribute (2.0.0)
@@ -122,16 +121,14 @@ DEPENDENCIES
   dotenv
   factory_bot
   launchy
-  pg (~> 1.0)
+  pg (~> 1.00)
   poltergeist
   pry
-  puma
   rake
   rspec (~> 3.7)
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
-  sinatra (~> 2.1)
-  sinatra-activerecord (~> 2.0.13)
+  sinatra (~> 2.2)
   sinatra-contrib
   sinatra-flash
   valid_attribute
