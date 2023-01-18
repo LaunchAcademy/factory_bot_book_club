@@ -1,12 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.6.1)
-      activesupport (= 6.1.6.1)
-    activerecord (6.1.6.1)
-      activemodel (= 6.1.6.1)
-      activesupport (= 6.1.6.1)
-    activesupport (6.1.6.1)
+    activemodel (6.1.7.1)
+      activesupport (= 6.1.7.1)
+    activerecord (6.1.7.1)
+      activemodel (= 6.1.7.1)
+      activesupport (= 6.1.7.1)
+    activesupport (6.1.7.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -41,12 +41,14 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.17.0)
     multi_json (1.15.0)
     mustermann (1.1.2)
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.13.7)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.7-arm64-darwin)
       racc (~> 1.4)
     pg (1.4.1)
     poltergeist (1.18.1)
@@ -89,9 +91,6 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.1)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.23)
-      activerecord (>= 4.1)
-      sinatra (>= 1.0)
     sinatra-contrib (2.2.1)
       multi_json
       mustermann (~> 1.0)
@@ -101,7 +100,7 @@ GEM
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
     tilt (2.0.10)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     valid_attribute (2.0.0)
     websocket-driver (0.7.5)
@@ -109,29 +108,27 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   arm64-darwin-20
   ruby
 
 DEPENDENCIES
-  activerecord (~> 6.1.4)
+  activerecord (~> 6.1.7)
   capybara (~> 2.15)
   database_cleaner
   dotenv
   factory_bot
   launchy
-  pg (~> 1.0)
+  pg (~> 1.00)
   poltergeist
   pry
-  puma
   rake
   rspec (~> 3.7)
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
-  sinatra (~> 2.1)
-  sinatra-activerecord (~> 2.0.13)
+  sinatra (~> 2.0)
   sinatra-contrib
   sinatra-flash
   valid_attribute
