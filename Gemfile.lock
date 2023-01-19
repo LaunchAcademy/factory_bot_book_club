@@ -48,6 +48,8 @@ GEM
     nokogiri (1.13.7)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.7-arm64-darwin)
+      racc (~> 1.4)
     pg (1.4.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -58,7 +60,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.2)
     rack-protection (2.2.1)
       rack
     rack-test (2.0.2)
@@ -89,9 +91,6 @@ GEM
       rack (~> 2.2)
       rack-protection (= 2.2.1)
       tilt (~> 2.0)
-    sinatra-activerecord (2.0.23)
-      activerecord (>= 4.1)
-      sinatra (>= 1.0)
     sinatra-contrib (2.2.1)
       multi_json
       mustermann (~> 1.0)
@@ -122,16 +121,14 @@ DEPENDENCIES
   dotenv
   factory_bot
   launchy
-  pg (~> 1.0)
+  pg (~> 1.00)
   poltergeist
   pry
-  puma
   rake
   rspec (~> 3.7)
   shoulda (~> 3.5)
   shoulda-matchers (~> 2.0)
-  sinatra (~> 2.1)
-  sinatra-activerecord (~> 2.0.13)
+  sinatra (~> 2.0)
   sinatra-contrib
   sinatra-flash
   valid_attribute
